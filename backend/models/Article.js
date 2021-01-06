@@ -1,6 +1,7 @@
 // Import the necessary packages
 const mongoose = require("mongoose");
 
+const User = require("./User");
 // Create Schema for Article
 const AtricleSchema = new mongoose.Schema(
     {
@@ -10,6 +11,10 @@ const AtricleSchema = new mongoose.Schema(
         },
         body: {
             type: String,
+            required: true,
+        },
+        author: {
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
     },
