@@ -1,3 +1,4 @@
+// Import the necessary packages
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const bcrypt = require("bcrypt");
@@ -43,6 +44,9 @@ const UserSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
+// with pre method, we specify, before saving the next document ensure to run this method
+// We make use of this method, to hash the password with the help of bcrypt, if it is modified
+// like at the first save, reset password, etc.
 UserSchema.pre("save", function (next) {
     if (!this.isModified("password")) {
         return next();
@@ -58,6 +62,8 @@ UserSchema.pre("save", function (next) {
     }
 });
 
+// We are attaching comparePassowrd method to our schema so that,
+// we will be able to compare plaintext password with our hashed password with bcrypt
 UserSchema.methods.comparePassword = function (password, callback) {
     bcrypt.compare(password, this.password, (err, isMatch) => {
         if (err) return callback(err);
