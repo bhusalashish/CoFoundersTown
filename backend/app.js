@@ -35,30 +35,8 @@ connection.once("open", function () {
     console.log("MongoDB database connection established successfully");
 });
 
-// Fake data for testing
-const newUser = {
-    username: "bhusalashish1",
-    email: "ashish@gmail1.com",
-    name: {
-        first_name: "Ashish",
-        last_name: "Bhusal",
-    },
-    password: "abc123",
-    age: 21,
-};
-
-// Creating the document for the new user
-const user = new User(newUser);
-
-// Save the document to the collection
-
-user.save((err, document) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("saved succefully", document);
-    }
-});
+const userRouter = require("./routes/User");
+app.use("/user", userRouter);
 
 // Start the server in the specified port number which is there in the environment variable
 app.listen(PORT, function () {
