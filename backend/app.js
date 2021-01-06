@@ -38,6 +38,9 @@ connection.once("open", function () {
 const userRouter = require("./routes/User");
 app.use("/user", userRouter);
 
+const publishRouter = require("./routes/Publish");
+app.use("/publish", publishRouter);
+
 // Start the server in the specified port number which is there in the environment variable
 app.listen(PORT, function () {
     console.log("Server is running on Port: " + PORT);

@@ -100,43 +100,6 @@ userRouter.get(
     }
 );
 
-userRouter.post(
-    "/publish",
-    passport.authenticate("jwt", { session: false }),
-    (req, res) => {
-        const newArticle = {
-            ...req.body,
-            author: req.user._id,
-        };
-        const article = new Article(newArticle);
-        article.save((err) => {
-            if (err)
-                res.status(500).json({
-                    message: { msgBody: "Error has occured", msgError: true },
-                });
-            else {
-                req.user.articles.push(article);
-                req.user.save((err) => {
-                    if (err)
-                        res.status(500).json({
-                            message: {
-                                msgBody: "Error has occured",
-                                msgError: true,
-                            },
-                        });
-                    else
-                        res.status(200).json({
-                            message: {
-                                msgBody: "Successfully Published the Article",
-                                msgError: false,
-                            },
-                        });
-                });
-            }
-        });
-    }
-);
-
 userRouter.get(
     "/:username",
     passport.authenticate("jwt", { session: false }),
