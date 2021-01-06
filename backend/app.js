@@ -37,8 +37,8 @@ connection.once("open", function () {
 
 // Fake data for testing
 const newUser = {
-    username: "bhusalashish",
-    email: "ashish@gmail.com",
+    username: "bhusalashish1",
+    email: "ashish@gmail1.com",
     name: {
         first_name: "Ashish",
         last_name: "Bhusal",

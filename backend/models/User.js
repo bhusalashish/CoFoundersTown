@@ -1,8 +1,12 @@
 // Import the necessary packages
 const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
+// const uniqueValidator = require("mongoose-unique-validator");
 const bcrypt = require("bcrypt");
 
+// import user-defidned modules
+const Article = require("./Article");
+
+// Create Schema for Article
 const UserSchema = new mongoose.Schema(
     {
         username: {
@@ -34,17 +38,17 @@ const UserSchema = new mongoose.Schema(
         age: {
             type: Number,
         },
-        // articles: [
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: Article,
-        //     },
-        // ],
+        articles: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: Article,
+            },
+        ],
     },
     { timestamps: true }
 );
 
-// with pre method, we specify, before saving the next document ensure to run this method
+// With pre hook (method), we specify, before saving the document ensure to run this method
 // We make use of this method, to hash the password with the help of bcrypt, if it is modified
 // like at the first save, reset password, etc.
 UserSchema.pre("save", function (next) {
