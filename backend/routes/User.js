@@ -101,6 +101,20 @@ userRouter.get(
 );
 
 userRouter.get(
+    "/isAuthenticated",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        const { username, name } = req.user;
+        res.status(200).json({
+            isAuthenticated: true,
+            user: { username, name },
+        });
+    }
+);
+
+// get info about user profile and the articles that person has published
+// make sure this is the last route, otherwise it will be matched for other routes and will through unotherzed access
+userRouter.get(
     "/:username",
     passport.authenticate("jwt", { session: false }),
     (req, res) => {
@@ -133,35 +147,5 @@ userRouter.get(
         }
     }
 );
-
-// userRouter.get(
-//     "/admin",
-//     passport.authenticate("jwt", { session: false }),
-//     (req, res) => {
-//         if (req.user.role === "admin") {
-//             res.status(200).json({
-//                 message: { msgBody: "You are an admin", msgError: false },
-//             });
-//         } else
-//             res.status(403).json({
-//                 message: {
-//                     msgBody: "You're not an admin,go away",
-//                     msgError: true,
-//                 },
-//             });
-//     }
-// );
-
-// userRouter.get(
-//     "/authenticated",
-//     passport.authenticate("jwt", { session: false }),
-//     (req, res) => {
-//         const { username, role } = req.user;
-//         res.status(200).json({
-//             isAuthenticated: true,
-//             user: { username, role },
-//         });
-//     }
-// );
 
 module.exports = userRouter;
