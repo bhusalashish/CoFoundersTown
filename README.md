@@ -9,6 +9,9 @@ The end points are:-
 3) "/user/register/ 
 
 Only for logged in Users:-
+
 4) "/user/:username" -->> profile of the user along with his/her blogs
+
 5) "/publish: -->> Endpoint for publishing blogs
+
 6) "/user/logout" 
