@@ -15,3 +15,9 @@ Only for logged in Users:-
 5) "/publish: -->> Endpoint for publishing blogs
 
 6) "/user/logout" 
+
+
+
+The front end of the app is hosted in firebase and backend is hosted in heroku.
+The link to the full stack app is
+https://ashish-bhusal-blog.web.app/
