@@ -8,7 +8,7 @@ The end points are:-
 2) "/user/login" -->> For login provide username and password
 3) "/user/register/ 
 
-**Only for logged in Users:-**
+**Only for logged in Users:-
 4) "/user/:username" -->> profile of the user along with his/her blogs
 5) "/publish: -->> Endpoint for publishing blogs
 6) "/user/logout" 
