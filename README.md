@@ -23,3 +23,8 @@ The front end of the app is hosted in firebase and backend is hosted in heroku.
 The link to the full stack app is
 
 https://ashish-bhusal-blog.web.app/
+
+
+Note:- There are some minor issues with the front-end, because of which login route is not working properly. But the API is well and good.
+
+I will fix as soon as possible
