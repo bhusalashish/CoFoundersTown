@@ -1,0 +1,20 @@
+.navbar__authbutton a {
+    color: white !important;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.navbar__authbutton a:hover {
+    color: pink !important;
+    background-color: transparent;
+}
+
+.navbar__home a {
+    color: white !important;
+    background-color: transparent;
+    text-decoration: none;
+}
+.navbar__home a:hover {
+    color: black !important;
+    background-color: transparent;
+}

@@ -34,7 +34,7 @@ const AuthService = {
             .then((data) => data);
     },
     isAuthenticated: () => {
-        return fetch("/user/authenticated").then((res) => {
+        return fetch("/user/isAuthenticated").then((res) => {
             if (res.status !== 401) return res.json().then((data) => data);
             else
                 return {

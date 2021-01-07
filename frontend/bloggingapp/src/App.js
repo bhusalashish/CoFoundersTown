@@ -1,19 +1,24 @@
-import React, { useContext } from "react";
-import { AuthContext } from "./Contexts/AuthContextProvider";
-import "./App.css";
+import React from "react";
+import Navbar from "./Components/Navbar";
+import Login from "./Components/Login";
+import Home from "./Components/Home";
+// import Todos from "./Components/Todos";
+import Register from "./Components/Register";
+// import Admin from "./Components/Admin";
+// import PrivateRoute from "./hocs/PrivateRoute";
+// import UnPrivateRoute from "./hocs/UnPrivateRoute";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
-    const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(
-        AuthContext
-    );
-    console.log(user);
-    console.log(isAuthenticated);
     return (
-        <div className="App">
-            <h1>Hey There</h1>
-            User : {user}
-            isAuthenticated : {isAuthenticated}
-        </div>
+        <Router>
+            <Navbar />
+            <Route exact path="/" component={Home} />
+            <Route path="/user/login" component={Login} />
+            <Route path="/user/register" component={Register} />
+            {/* <PrivateRoute path="/todos" roles={["user","admin"]} component={Todos}/> */}
+            {/* <PrivateRoute path="/admin" roles={["admin"]} component={Admin}/> */}
+        </Router>
     );
 }
 

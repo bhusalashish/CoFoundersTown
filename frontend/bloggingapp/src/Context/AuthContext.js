@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import AuthService from "../Services/AuthService";
 
-export const AuthContext = React.createContext();
+export const AuthContext = createContext();
 
-function AuthContextProvider({ children }) {
+export default ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLoaded, setIsLoaded] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         AuthService.isAuthenticated().then((data) => {
@@ -34,6 +34,4 @@ function AuthContextProvider({ children }) {
             )}
         </div>
     );
-}
-
-export default AuthContextProvider;
+};

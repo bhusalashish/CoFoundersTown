@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 // importing auth context provider so that the context isAuthenticated and
 // user will be available throughout our app
-import AuthContextProvider from "./Contexts/AuthContextProvider";
+import AuthContextProvider from "./Context/AuthContext";
 
 ReactDOM.render(
     <React.StrictMode>
