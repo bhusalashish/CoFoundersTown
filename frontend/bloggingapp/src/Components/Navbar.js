@@ -11,13 +11,19 @@ const Navbar = (props) => {
     );
 
     const onClickLogoutHandler = () => {
-        AuthService.logout().then((data) => {
-            if (data.success) {
-                setUser(data.user);
-                setIsAuthenticated(false);
-                history.push("/");
-            }
-        });
+        if (isAuthenticated) {
+            AuthService.logout().then((data) => {
+                if (data.status === 401) {
+                    console.log("error");
+                } else if (data.success) {
+                    setUser(data.user);
+                    setIsAuthenticated(false);
+                    history.push("/");
+                } else {
+                    console.log("error");
+                }
+            });
+        }
     };
 
     const unauthenticatedNavBar = () => {

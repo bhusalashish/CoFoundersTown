@@ -1,7 +1,10 @@
+const baseurl = "https://mighty-chamber-79109.herokuapp.com";
 const AuthService = {
     login: (user) => {
         // console.log(user);
-        return fetch("/user/login", {
+        const url = baseurl + "/user/login";
+        console.log(url);
+        return fetch(url, {
             method: "post",
             body: JSON.stringify(user),
             headers: {
@@ -18,7 +21,8 @@ const AuthService = {
     },
     register: (user) => {
         // console.log(user);
-        return fetch("/user/register", {
+        const url = baseurl + "/user/register";
+        return fetch(url, {
             method: "post",
             body: JSON.stringify(user),
             headers: {
@@ -29,12 +33,20 @@ const AuthService = {
             .then((data) => data);
     },
     logout: () => {
-        return fetch("/user/logout")
-            .then((res) => res.json())
-            .then((data) => data);
+        const url = baseurl + "/user/logout";
+        return fetch(url).then((res) => {
+            if (res.status !== 401) return res.json().then((data) => data);
+            else {
+                return {
+                    isAuthenticated: false,
+                    user: { username: "", name: {} },
+                };
+            }
+        });
     },
     isAuthenticated: () => {
-        return fetch("/user/isAuthenticated").then((res) => {
+        const url = baseurl + "/user/isAuthenticated";
+        return fetch(url).then((res) => {
             if (res.status !== 401) return res.json().then((data) => data);
             else
                 return {

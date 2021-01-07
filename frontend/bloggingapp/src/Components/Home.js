@@ -7,7 +7,6 @@ const Home = () => {
     useEffect(() => {
         HomeService.getBlogs().then((data) => {
             setArticles(data.articles);
-            console.log(data);
         });
     }, []);
     return (

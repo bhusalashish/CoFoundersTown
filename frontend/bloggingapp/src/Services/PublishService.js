@@ -1,6 +1,9 @@
+const baseurl = "https://mighty-chamber-79109.herokuapp.com";
+
 export default {
     publish: (article) => {
-        return fetch("/publish", {
+        const url = baseurl + "/publish";
+        return fetch(url, {
             method: "post",
             body: JSON.stringify(article),
             headers: {

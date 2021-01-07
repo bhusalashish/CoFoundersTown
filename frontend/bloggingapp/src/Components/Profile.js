@@ -31,7 +31,7 @@ const Profile = (props) => {
 
     return (
         <div>
-            <h1>
+            {/* <h1>
                 {camelize(
                     authContext.user.name.first_name +
                         " " +
@@ -39,12 +39,13 @@ const Profile = (props) => {
                 )}
                 's
                 {" Blogs"}
-            </h1>
-            {!articles.length ? "No Articles Published" : null}
+            </h1> */}
+            {articles && !articles.length ? "No Articles Published" : null}
             <ul className="list-group">
-                {articles.map((article) => {
-                    return <Article key={article._id} article={article} />;
-                })}
+                {articles &&
+                    articles.map((article) => {
+                        return <Article key={article._id} article={article} />;
+                    })}
             </ul>
         </div>
     );

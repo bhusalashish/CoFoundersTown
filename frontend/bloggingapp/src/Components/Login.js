@@ -19,9 +19,10 @@ const Login = (props) => {
             const { isAuthenticated, user, message } = data;
             if (isAuthenticated) {
                 authContext.setUser(user);
-                authContext.setIsAuthenticated(isAuthenticated);
-                const redirect = "/user/" + user.username;
-                props.history.push(redirect);
+                authContext.setIsAuthenticated(true);
+                // const redirect = "/user/" + user.username;
+                console.log(authContext.isAuthenticated);
+                // props.history.push(redirect);
             } else setMessage(message);
         });
     };
