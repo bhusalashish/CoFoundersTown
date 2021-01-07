@@ -1,4 +1,4 @@
-export default {
+const AuthService = {
     login: (user) => {
         // console.log(user);
         return fetch("/user/login", {
@@ -39,8 +39,10 @@ export default {
             else
                 return {
                     isAuthenticated: false,
-                    user: { username: "", name: {} },
+                    user: "",
                 };
         });
     },
 };
+
+export default AuthService;
