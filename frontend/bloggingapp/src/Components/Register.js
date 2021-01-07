@@ -41,7 +41,7 @@ const Register = (props) => {
             resetForm();
             if (!message.msgError) {
                 timerID = setTimeout(() => {
-                    props.history.push("/login");
+                    props.history.push("/user/login");
                 }, 500);
             }
         });

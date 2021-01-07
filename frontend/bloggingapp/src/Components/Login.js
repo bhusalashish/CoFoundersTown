@@ -20,7 +20,8 @@ const Login = (props) => {
             if (isAuthenticated) {
                 authContext.setUser(user);
                 authContext.setIsAuthenticated(isAuthenticated);
-                props.history.push("/profile");
+                const redirect = "/user/" + user.username;
+                props.history.push(redirect);
             } else setMessage(message);
         });
     };

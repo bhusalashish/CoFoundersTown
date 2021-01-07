@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import AuthService from "../Services/AuthService";
 import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = (props) => {
+    let history = useHistory();
     const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(
         AuthContext
     );
@@ -13,6 +15,7 @@ const Navbar = (props) => {
             if (data.success) {
                 setUser(data.user);
                 setIsAuthenticated(false);
+                history.push("/");
             }
         });
     };
@@ -39,8 +42,11 @@ const Navbar = (props) => {
                 <Link to="/">
                     <li className="nav-item nav-link">Home</li>
                 </Link>
-                <Link to={`/${user.username}`}>
+                <Link to={`/user/${user.username}`}>
                     <li className="nav-item nav-link">Profile</li>
+                </Link>
+                <Link to="/publish">
+                    <li className="nav-item nav-link">Publish</li>
                 </Link>
                 <button
                     type="button"
